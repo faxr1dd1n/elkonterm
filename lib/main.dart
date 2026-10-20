@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() {
@@ -59,6 +60,25 @@ class _MainScreenState extends State<MainScreen>
       ..setBackgroundColor(Colors.white)
       ..setNavigationDelegate(
         NavigationDelegate(
+          onNavigationRequest: (request) {
+            final uri = Uri.tryParse(request.url);
+            if (uri == null) return NavigationDecision.navigate;
+            final scheme = uri.scheme.toLowerCase();
+            final isExternalScheme =
+                scheme == 'tel' ||
+                scheme == 'mailto' ||
+                scheme == 'sms' ||
+                scheme == 'tg' ||
+                scheme == 'whatsapp';
+            final isTelegramLink =
+                (scheme == 'http' || scheme == 'https') &&
+                (uri.host == 't.me' || uri.host == 'telegram.me');
+            if (isExternalScheme || isTelegramLink) {
+              launchUrl(uri, mode: LaunchMode.externalApplication);
+              return NavigationDecision.prevent;
+            }
+            return NavigationDecision.navigate;
+          },
           onPageFinished: (url) {
             hideSplashAfterMinimumDuration();
           },
@@ -74,7 +94,7 @@ class _MainScreenState extends State<MainScreen>
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://hosilkarvoni.uz/en'));
+      ..loadRequest(Uri.parse('https://www.elkonterm.uz'));
   }
 
   void retry() {

@@ -45,5 +45,18 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Elkonterm needs camera access so you can take a photo to upload.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Elkonterm needs photo library access so you can upload a photo.</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>tel</string>
+		<string>telprompt</string>
+		<string>mailto</string>
+		<string>sms</string>
+		<string>tg</string>
+		<string>telegram</string>
+	</array>
 </dict>
 </plist>
