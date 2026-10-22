@@ -46,9 +46,9 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Elkonterm needs camera access so you can take a photo to upload.</string>
+	<string>Elkonterm uses your camera only when you choose to take a new photo to attach to a form or your profile on elkonterm.uz. For example, you can photograph a product or document and upload it directly. Photos are not taken or shared in the background.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Elkonterm needs photo library access so you can upload a photo.</string>
+	<string>Elkonterm accesses your photo library only when you choose to select an existing photo to attach to a form or your profile on elkonterm.uz. For example, you can pick a saved picture of a product or document to upload. Only the photos you select are shared.</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>tel</string>
